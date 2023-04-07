@@ -1,6 +1,6 @@
 
 
-# YugabyteDB run on 3 docker node 
+# YugabyteDB run on 4 docker node 
 quick start: `docker compose up` it's take time for ready nodes.  hot start: 2 minutes 
 you will see ready nodes on console  : `yb1  | heartbeat ok`
 
@@ -19,8 +19,11 @@ you will see ready nodes on console  : `yb1  | heartbeat ok`
 ## Ref links
 - https://docs.yugabyte.com/preview/reference/configuration/yb-master/
 - https://docs.yugabyte.com/preview/deploy/multi-dc/3dc-deployment/
+- https://docs.yugabyte.com/preview/deploy/manual-deployment/start-masters/
+- https://docs.yugabyte.com/preview/deploy/manual-deployment/start-tservers/
 
 # MyNotes:
+- yugabyte RF minimum 3 with 4 node if we want 1 node failover. because table data split to tablets evey tablet should have leader and follower node. we should have minimum 2 copy to accessing data. 
 - all documentation run with `docker run --bla --blabla ...`  ok it's run & i can test it. but i want to create config for portability 
 - docker compose file and all images build from .Dockerfile is good idea for portability and development.
 - i try create a configuration in this repository.

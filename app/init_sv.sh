@@ -13,6 +13,6 @@ chmod 777 /app/entrypoint_db.sh
 (/app/entrypoint_db.sh) &
 echo "$!" >/tmp/entrypoint_db.pid
 
- /home/yugabyte/bin/yb-master --fs_data_dirs=/mnt/disk0 --master_addresses=$YUGA_MASTERS --rpc_bind_addresses=$HOSTNAME:7100 --replication_factor=2 --leader_failure_max_missed_heartbeat_periods 10 &
- /home/yugabyte/bin/yb-tserver --fs_data_dirs=/mnt/disk1 --start_pgsql_proxy --rpc_bind_addresses=$HOSTNAME:9100 --tserver_master_addrs=$YUGA_MASTERS --leader_failure_max_missed_heartbeat_periods 10 
+ /home/yugabyte/bin/yb-master --fs_data_dirs=/mnt/disk0 --master_addresses=$YUGA_MASTERS  --rpc_bind_addresses=$HOSTNAME:7100 --replication_factor=3   --leader_failure_max_missed_heartbeat_periods 5 &
+ /home/yugabyte/bin/yb-tserver --fs_data_dirs=/mnt/disk1 --start_pgsql_proxy --rpc_bind_addresses=$HOSTNAME:9100 --tserver_master_addrs=$YUGA_MASTERS --leader_failure_max_missed_heartbeat_periods 5 
 

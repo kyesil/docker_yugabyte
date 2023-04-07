@@ -15,16 +15,15 @@ services:
       context: ./
       dockerfile: manual.Dockerfile
     container_name: yb1
-    hostname: yb1
-    
+    hostname: yb1   
     ports:
       - "7001:7000"
       - "9001:9000"
       - "5431:5433"
     volumes:
+      - ./app:/app
       - yb1-data:/mnt/disk1
       - yb1-master:/mnt/disk0
-
 
   yb2:
     build:
@@ -37,10 +36,9 @@ services:
       - "9002:9000"
       - "5432:5433"
     volumes:
+      - ./app:/app
       - yb2-data:/mnt/disk1
       - yb2-master:/mnt/disk0
-
-
 
   yb3:
     build:
@@ -53,8 +51,10 @@ services:
       - "9003:9000"
       - "5433:5433"
     volumes:
+      - ./app:/app
       - yb3-data:/mnt/disk1
       - yb3-master:/mnt/disk0
+
   yb4:
     build:
       context: ./
@@ -66,6 +66,7 @@ services:
       - "9004:9000"
       - "5434:5433"
     volumes:
+      - ./app:/app
       - yb4-data:/mnt/disk1
       - yb4-master:/mnt/disk0
 

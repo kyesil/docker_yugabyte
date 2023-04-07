@@ -1,14 +1,14 @@
 #!/bin/bash
 db="dbapp"
 echo "entrypoint point starting"
-
+sleep 15
 while true; do
   ysqlsh -h $HOSTNAME -U yugabyte  -f "/app/$db.sql" #&>/dev/null
   if [ $? -eq 0 ]; then
     echo "imported sql"
     break
   else
-    echo "err sWql waiting"
+    echo "err sql waiting"
   fi
   sleep 10
 done
